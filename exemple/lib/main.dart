@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:humanize_duration/humanize_duration.dart';
 
@@ -35,10 +37,18 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       huminized = humanizeDuration(
-        const Duration(milliseconds: 945786546),
+        const Duration(milliseconds: 97320000),
         language: const ArLanguage(),
+        options: const HumanizeOptions(
+          conjunction: ' و ',
+          units: [Units.day, Units.hour],
+          // delimiter: ' -- ',
+          // lastPrefixComma: false,
+          // spacer: ' Whole'
+        ),
       );
     });
+    log(huminized);
   }
 
   @override

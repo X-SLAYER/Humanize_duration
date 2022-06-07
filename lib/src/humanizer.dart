@@ -94,11 +94,27 @@ class _HumanizePiece {
 /// By default, Humanize Duration will humanize down to the millisecond.
 /// It will humanize in English by default.
 /// For example,
+/// ```dart
 /// humanizeDuration(const Duration(milliseconds: 3000)); // '3 seconds'
 /// humanizeDuration(const Duration(milliseconds: 97320000)); // '1 day, 3 hours, 2 minutes'
+/// ```
 ///
-/// --Options
-/// You can change the settings by passing options as the second argument:
+/// -- Options and languages
+/// You can change the settings and languages :
+///
+///  ```dart
+/// humanizeDuration(
+///  const Duration(milliseconds: 97320000),
+///  language: const ArLanguage(),
+///  options: const HumanizeOptions(
+///    conjunction: ' و ',
+///    units: [Units.day, Units.hour],
+///    // delimiter: ' -- ',
+///    // lastPrefixComma: false,
+///    // spacer: ' Whole'
+///  ),
+///);
+/// ```
 ///
 String humanizeDuration(
   Duration duration, {
