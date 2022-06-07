@@ -36,10 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       huminized = humanizeDuration(
         const Duration(milliseconds: 945786546),
-        options: const HumanizeOptions(
-            conjunction: ' and ',
-            delimiter: ' -- ',
-            units: [Units.day, Units.hour, Units.minute]),
+        language: const ArLanguage(),
       );
     });
   }

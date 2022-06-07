@@ -1,4 +1,4 @@
-import 'package:humanize_duration/src/languages/humanize_language.dart';
+import 'package:humanize_duration/src/humanize_language.dart';
 
 class FrLanguage implements HumanLanguage {
   const FrLanguage();

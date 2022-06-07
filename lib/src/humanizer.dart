@@ -1,8 +1,10 @@
-import 'package:humanize_duration/src/languages/humanize_language.dart';
+import 'package:humanize_duration/src/humanize_language.dart';
 
 import 'languages/en.dart';
 
 enum Units { year, month, week, day, hour, minute, second, millisecond }
+
+const arabicDigits = ["۰", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
 
 const Map<Units, int> _unitMeasures = {
   Units.year: 31557600000,
@@ -17,6 +19,8 @@ const Map<Units, int> _unitMeasures = {
 
 class HumanizeOptions {
   /// List of units to use.
+  /// It can be one, or a combination of any, of the following
+  /// `Units.year`, `Units.month`, `Units.week`, `Units.day`, `Units.hour`, `Units.minute`, `Units.second`, `Units.millisecond`.
   final List<Units> units;
 
   /// String to display between each value and unit.
@@ -29,7 +33,7 @@ class HumanizeOptions {
   /// You can also set `lastPrefixComma` to `false` to eliminate the final comma.
   final String? conjunction;
 
-  /// the comma set before the last value.
+  /// The comma set before the last value.
   final bool lastPrefixComma;
 
   const HumanizeOptions({
@@ -49,6 +53,9 @@ class _HumanizePiece {
   _HumanizePiece(this.unitName, this.unitCount, this.language);
 
   String format(String spacer) {
+    if (language.name().toLowerCase() == 'ar') {
+      return '${_toArabicDigits(unitCount.toString())}$spacer$unitLanguage';
+    }
     return '$unitCount$spacer$unitLanguage';
   }
 
@@ -73,6 +80,14 @@ class _HumanizePiece {
       default:
         throw Exception('Unknown unit name: $unitName');
     }
+  }
+
+  String _toArabicDigits(String digit) {
+    var character = '';
+    for (var i = 0; i < digit.length; i++) {
+      character += arabicDigits[int.parse(digit[i])];
+    }
+    return character;
   }
 }
 
