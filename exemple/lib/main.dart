@@ -30,12 +30,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  final Duration duration = const Duration(milliseconds: 361000);
+  String huminized = '';
 
   void _incrementCounter() {
     setState(() {
-      _counter++;
+      huminized = humanizeDuration(
+        const Duration(milliseconds: 945786546),
+        options: const HumanizeOptions(
+            conjunction: ' and ',
+            delimiter: ' -- ',
+            units: [Units.day, Units.hour, Units.minute]),
+      );
     });
   }
 
@@ -49,11 +54,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            const Text('Duration: '),
             Text(
-              humanizeDuration(duration),
-            ),
-            Text(
-              '$_counter',
+              huminized,
               style: Theme.of(context).textTheme.headline4,
             ),
           ],

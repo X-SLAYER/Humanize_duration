@@ -7,26 +7,26 @@ class FrLanguage implements HumanLanguage {
   String name() => 'fr';
 
   @override
-  String day(int value) => 'jour${value >= 2 ? '' : 's'}';
+  String day(int value) => 'jour${value == 1 ? '' : 's'}';
 
   @override
-  String hour(int value) => 'heure${value >= 2 ? '' : 's'}';
+  String hour(int value) => 'heure${value == 1 ? '' : 's'}';
 
   @override
-  String millisecond(int value) => 'milliseconde${value >= 2 ? '' : 's'}';
+  String millisecond(int value) => 'milliseconde${value == 1 ? '' : 's'}';
 
   @override
-  String minute(int value) => 'minute${value >= 2 ? '' : 's'}';
+  String minute(int value) => 'minute${value == 1 ? '' : 's'}';
 
   @override
   String month(int value) => 'mois';
 
   @override
-  String second(int value) => 'seconde${value >= 2 ? '' : 's'}';
+  String second(int value) => 'seconde${value == 1 ? '' : 's'}';
 
   @override
-  String week(int value) => 'semaine${value >= 2 ? '' : 's'}';
+  String week(int value) => 'semaine${value == 1 ? '' : 's'}';
 
   @override
-  String year(int value) => 'an${value >= 2 ? '' : 's'}';
+  String year(int value) => 'an${value == 1 ? '' : 's'}';
 }
