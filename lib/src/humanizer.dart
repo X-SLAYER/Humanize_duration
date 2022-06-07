@@ -48,7 +48,7 @@ class HumanizeOptions {
 class _HumanizePiece {
   final Units unitName;
   final int unitCount;
-  final HumanLanguage language;
+  final HumanizeLanguage language;
 
   _HumanizePiece(this.unitName, this.unitCount, this.language);
 
@@ -101,6 +101,8 @@ class _HumanizePiece {
 ///
 /// -- Options and languages
 /// You can change the settings and languages :
+/// Supported languages: [EnLanguage, EsLanguage, FrLanguage, JpLanguage, ArLanguage]
+/// `English` , `Spanish` , `French` , `Arabic` , `Japanese`
 ///
 ///  ```dart
 /// humanizeDuration(
@@ -119,7 +121,7 @@ class _HumanizePiece {
 String humanizeDuration(
   Duration duration, {
   HumanizeOptions options = const HumanizeOptions(),
-  HumanLanguage language = const EnLanguage(),
+  HumanizeLanguage language = const EnLanguage(),
 }) {
   int i, len;
   len = options.units.length;

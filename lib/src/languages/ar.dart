@@ -1,6 +1,6 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
-class ArLanguage implements HumanLanguage {
+class ArLanguage implements HumanizeLanguage {
   const ArLanguage();
 
   @override

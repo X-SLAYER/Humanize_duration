@@ -1,6 +1,6 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
-class EsLanguage implements HumanLanguage {
+class EsLanguage implements HumanizeLanguage {
   const EsLanguage();
 
   @override

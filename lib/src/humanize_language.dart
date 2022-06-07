@@ -1,4 +1,4 @@
-abstract class HumanLanguage {
+abstract class HumanizeLanguage {
   String name();
   String year(int value);
   String month(int value);

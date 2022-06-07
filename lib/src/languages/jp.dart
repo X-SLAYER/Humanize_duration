@@ -1,6 +1,6 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
-class JpLanguage implements HumanLanguage {
+class JpLanguage implements HumanizeLanguage {
   const JpLanguage();
 
   @override
