@@ -1,5 +1,5 @@
 name: humanize_duration
-description: A new Flutter package project.
+description: Humanize a duration to a readable format | 361000 becomes "6 minutes, 1 second"
 version: 0.0.1
 homepage:
 
