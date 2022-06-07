@@ -1,39 +1,83 @@
-<!-- 
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+# Humanize Duration
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages). 
+Humanize a duration to a readable format 
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages). 
--->
+### Installation and usage ###
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+Add package to your pubspec:
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  humanize_duration: any # or the latest version on Pub
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder. 
+By default, Humanize Duration will humanize down to the millisecond. It will humanize in English by default.
 
 ```dart
-const like = 'sample';
+humanizeDuration(const Duration(milliseconds: 3000)); // '3 seconds'
+humanizeDuration(const Duration(milliseconds: 97320000)); // '1 day, 3 hours, 2 minutes'
 ```
 
-## Additional information
+### Options and languages
 
-TODO: Tell users more about the package: where to find more information, how to 
-contribute to the package, how to file issues, what response they can expect 
-from the package authors, and more.
+  ```dart
+  
+/// Supported languages: [EnLanguage, EsLanguage, FrLanguage, JpLanguage, ArLanguage]
+/// `English` , `Spanish` , `French` , `Arabic` , `Japanese`
+  
+ humanizeDuration(
+  const Duration(milliseconds: 97320000),
+  language: const ArLanguage(),
+  options: const HumanizeOptions(
+    conjunction: ' و ', // String to include before the final unit.
+    units: [Units.day, Units.hour], // List of units to use. It can be one, or a combination of any, of the following
+    // delimiter: ' -- ', // String to display between the previous unit and the next value.
+    // lastPrefixComma: false, // The comma set before the last value.
+    // spacer: ' Whole' // String to display between each value and unit.
+  ),
+);
+ //  ١ يوم و ٣ ساعات
+
+ ```
+ 
+ ### Add a custom language
+ Firstly you need to implement [HumanizeLanguage](https://github.com/X-SLAYER/Humanize_duration/blob/main/lib/src/humanize_language.dart) class.
+ 
+ ```dart
+import 'package:humanize_duration/humanize_duration.dart';
+
+class EuLanguage implements HumanizeLanguage {
+  const EuLanguage();
+
+  @override
+  String name() => 'eu';
+
+  @override
+  String day(int value) => 'egun';
+
+  @override
+  String hour(int value) => 'ordu';
+
+  @override
+  String millisecond(int value) => 'milisegundo';
+
+  @override
+  String minute(int value) => 'minutu';
+
+  @override
+  String month(int value) => 'hilabete';
+
+  @override
+  String second(int value) => 'segundo';
+
+  @override
+  String week(int value) => 'aste';
+
+  @override
+  String year(int value) => 'hilabete';
+}
+
+
+```
