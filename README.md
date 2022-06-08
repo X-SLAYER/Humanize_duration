@@ -20,7 +20,9 @@ humanizeDuration(const Duration(milliseconds: 3000)); // '3 seconds'
 humanizeDuration(const Duration(milliseconds: 97320000)); // '1 day, 3 hours, 2 minutes'
 ```
 
-### Options and languages
+# Options and languages
+
+### languages
 
   ```dart
   
@@ -30,15 +32,8 @@ humanizeDuration(const Duration(milliseconds: 97320000)); // '1 day, 3 hours, 2 
  humanizeDuration(
   const Duration(milliseconds: 97320000),
   language: const ArLanguage(),
-  options: const HumanizeOptions(
-    conjunction: ' و ', // String to include before the final unit.
-    units: [Units.day, Units.hour], // List of units to use. It can be one, or a combination of any, of the following
-    // delimiter: ' -- ', // String to display between the previous unit and the next value.
-    // lastPrefixComma: false, // The comma set before the last value.
-    // spacer: ' Whole' // String to display between each value and unit.
-  ),
 );
- //  ١ يوم و ٣ ساعات
+ //  ١ يوم , ٣ ساعات
 
  ```
  
@@ -80,4 +75,81 @@ class EuLanguage implements HumanizeLanguage {
 }
 
 
+```
+### delimiter
+
+String to display between the previous unit and the next value.
+
+```dart
+humanizeDuration(
+    const Duration(milliseconds: 97320000),
+    options: const HumanizeOptions(delimiter: ' -- '),
+  ); // 1 day -- 3 hours -- 2 minutes
+  
+humanizeDuration(
+  const Duration(milliseconds: 22140000),
+  options: const HumanizeOptions(delimiter: ' and '),
+); // 6 hours and 9 minutes
+  
+```
+
+### spacer
+
+String to display between each value and unit.
+
+```dart
+humanizeDuration(
+  const Duration(milliseconds: 22140000),
+  options: const HumanizeOptions(spacer: ' whole '),
+); // 6 whole hours, 9 whole minutes
+  
+```
+
+### units
+
+It can be one, or a combination of any, of the following.
+`Units.year`, `Units.month`, `Units.week`, `Units.day`, `Units.hour`, `Units.minute`, `Units.second`, `Units.millisecond`.
+
+```dart
+humanizeDuration(
+  const Duration(milliseconds: 3600000),
+  options: const HumanizeOptions(units: [Units.hour]),
+); // 1 hour
+
+humanizeDuration(
+  const Duration(milliseconds: 3600000),
+  options: const HumanizeOptions(units: [Units.minute]),
+); // 60 minutes
+
+humanizeDuration(
+  const Duration(milliseconds: 3600000),
+  options: const HumanizeOptions(units: [Units.day, Units.hour]),
+); // 1 hour
+  
+```
+
+### conjunction
+
+String to include before the final unit.
+You can also set `lastPrefixComma` to `false` to eliminate the final comma.
+
+```dart
+humanizeDuration(
+  const Duration(milliseconds: 22140000),
+  options: const HumanizeOptions(conjunction: ' and '),
+); // 6 hours and 9 minutes
+
+humanizeDuration(
+  const Duration(milliseconds: 22141000),
+  options: const HumanizeOptions(conjunction: ' and '),
+); // 6 hours, 9 minutes and 1 second
+
+ humanizeDuration(
+  const Duration(milliseconds: 22141000),
+  options: const HumanizeOptions(
+    conjunction: ' and ',
+    lastPrefixComma: true,
+  ),
+); // 6 hours, 9 minutes, and 1 second
+  
 ```
