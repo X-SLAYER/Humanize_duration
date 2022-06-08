@@ -1,6 +1,7 @@
 # Humanize Duration
 
-Humanize a duration to a readable format 
+Humanize a duration to a readable format.
+inspired from humanizeDuration.js
 
 ### Installation and usage ###
 

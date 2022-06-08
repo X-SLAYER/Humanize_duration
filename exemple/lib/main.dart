@@ -37,14 +37,10 @@ class _MyHomePageState extends State<MyHomePage> {
   void _incrementCounter() {
     setState(() {
       huminized = humanizeDuration(
-        const Duration(milliseconds: 97320000),
-        language: const ArLanguage(),
+        const Duration(milliseconds: 22141000),
         options: const HumanizeOptions(
-          conjunction: ' و ',
-          units: [Units.day, Units.hour],
-          // delimiter: ' -- ',
-          // lastPrefixComma: false,
-          // spacer: ' Whole'
+          conjunction: ' and ',
+          lastPrefixComma: true,
         ),
       );
     });
