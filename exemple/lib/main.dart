@@ -38,13 +38,19 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {
       huminized = humanizeDuration(
         const Duration(milliseconds: 22141000),
+        language: getLanguageByLocale('ru'),
         options: const HumanizeOptions(
-          conjunction: ' and ',
           lastPrefixComma: true,
         ),
       );
     });
     log(huminized);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    log('${getSupportedLanguages()}');
   }
 
   @override

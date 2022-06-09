@@ -1,21 +1,9 @@
+import 'package:humanize_duration/src/constants.dart';
 import 'package:humanize_duration/src/humanize_language.dart';
 
 import 'languages/en.dart';
 
 enum Units { year, month, week, day, hour, minute, second, millisecond }
-
-const arabicDigits = ["۰", "١", "٢", "٣", "٤", "٥", "٦", "٧", "٨", "٩"];
-
-const Map<Units, int> _unitMeasures = {
-  Units.year: 31557600000,
-  Units.month: 2629800000,
-  Units.week: 604800000,
-  Units.day: 86400000,
-  Units.hour: 3600000,
-  Units.minute: 60000,
-  Units.second: 1000,
-  Units.millisecond: 1
-};
 
 class HumanizeOptions {
   /// List of units to use.
@@ -134,7 +122,7 @@ String humanizeDuration(
 
   for (i = 0; i < len; i++) {
     unitName = options.units[i];
-    unitMS = _unitMeasures[unitName]!;
+    unitMS = unitMeasures[unitName]!;
     unitCount = (ms / unitMS).floor();
     pieces.add(_HumanizePiece(unitName, unitCount, language));
     ms -= unitCount * unitMS;

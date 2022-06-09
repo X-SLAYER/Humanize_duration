@@ -1,9 +1,9 @@
 # Humanize Duration
 
 Humanize a duration to a readable format.
-inspired from humanizeDuration.js
+inspired from [humanizeDuration.js](https://github.com/EvanHahn/HumanizeDuration.js)
 
-### Installation and usage ###
+### Installation and usage
 
 Add package to your pubspec:
 
@@ -25,58 +25,68 @@ humanizeDuration(const Duration(milliseconds: 97320000)); // '1 day, 3 hours, 2 
 
 ### languages
 
-  ```dart
-  
-/// Supported languages: [EnLanguage, EsLanguage, FrLanguage, JpLanguage, ArLanguage]
-/// `English` , `Spanish` , `French` , `Arabic` , `Japanese`
-  
- humanizeDuration(
+Supported languages: [Arabic, French, English, Spanish ...]
+For a list of supported languages, you can use the `getSupportedLanguages`
+
+```dart
+
+getSupportedLanguages(); // [ar, en, fr, es, jp, gr, du, fa, ge, it, ko, pt, ru, tr, zh_cn, zh_tw]
+
+humanizeDuration(
   const Duration(milliseconds: 97320000),
   language: const ArLanguage(),
 );
- //  ١ يوم , ٣ ساعات
+//  ١ يوم , ٣ ساعات
 
- ```
- 
- ### Add a custom language
- Firstly you need to implement [HumanizeLanguage](https://github.com/X-SLAYER/Humanize_duration/blob/main/lib/src/humanize_language.dart) class.
- 
- ```dart
+// OR get language by alpha
+humanizeDuration(
+  const Duration(milliseconds: 97320000),
+  language: getLanguageByLocale('ar'),
+);
+
+```
+
+### Add a custom language
+
+Firstly you need to implement [HumanizeLanguage](https://github.com/X-SLAYER/Humanize_duration/blob/main/lib/src/humanize_language.dart) class.
+
+```dart
 import 'package:humanize_duration/humanize_duration.dart';
 
 class EuLanguage implements HumanizeLanguage {
-  const EuLanguage();
+ const EuLanguage();
 
-  @override
-  String name() => 'eu';
+ @override
+ String name() => 'eu';
 
-  @override
-  String day(int value) => 'egun';
+ @override
+ String day(int value) => 'egun';
 
-  @override
-  String hour(int value) => 'ordu';
+ @override
+ String hour(int value) => 'ordu';
 
-  @override
-  String millisecond(int value) => 'milisegundo';
+ @override
+ String millisecond(int value) => 'milisegundo';
 
-  @override
-  String minute(int value) => 'minutu';
+ @override
+ String minute(int value) => 'minutu';
 
-  @override
-  String month(int value) => 'hilabete';
+ @override
+ String month(int value) => 'hilabete';
 
-  @override
-  String second(int value) => 'segundo';
+ @override
+ String second(int value) => 'segundo';
 
-  @override
-  String week(int value) => 'aste';
+ @override
+ String week(int value) => 'aste';
 
-  @override
-  String year(int value) => 'hilabete';
+ @override
+ String year(int value) => 'hilabete';
 }
 
 
 ```
+
 ### delimiter
 
 String to display between the previous unit and the next value.
@@ -86,12 +96,12 @@ humanizeDuration(
     const Duration(milliseconds: 97320000),
     options: const HumanizeOptions(delimiter: ' -- '),
   ); // 1 day -- 3 hours -- 2 minutes
-  
+
 humanizeDuration(
   const Duration(milliseconds: 22140000),
   options: const HumanizeOptions(delimiter: ' and '),
 ); // 6 hours and 9 minutes
-  
+
 ```
 
 ### spacer
@@ -103,7 +113,7 @@ humanizeDuration(
   const Duration(milliseconds: 22140000),
   options: const HumanizeOptions(spacer: ' whole '),
 ); // 6 whole hours, 9 whole minutes
-  
+
 ```
 
 ### units
@@ -126,7 +136,7 @@ humanizeDuration(
   const Duration(milliseconds: 3600000),
   options: const HumanizeOptions(units: [Units.day, Units.hour]),
 ); // 1 hour
-  
+
 ```
 
 ### conjunction
@@ -152,5 +162,5 @@ humanizeDuration(
     lastPrefixComma: true,
   ),
 ); // 6 hours, 9 minutes, and 1 second
-  
+
 ```

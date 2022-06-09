@@ -1,26 +1,26 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
-/// Spanish
-class EsLanguage implements HumanizeLanguage {
-  const EsLanguage();
+/// Portuguese
+class PtLanguage implements HumanizeLanguage {
+  const PtLanguage();
 
   @override
-  String name() => 'es';
+  String name() => 'pt';
 
   @override
-  String day(int value) => 'día${value == 1 ? '' : 's'}';
+  String day(int value) => 'dia${value == 1 ? '' : 's'}';
 
   @override
   String hour(int value) => 'hora${value == 1 ? '' : 's'}';
 
   @override
-  String millisecond(int value) => 'milisegundo${value == 1 ? '' : 's'}';
+  String millisecond(int value) => 'milissegundo${value == 1 ? '' : 's'}';
 
   @override
   String minute(int value) => 'minuto${value == 1 ? '' : 's'}';
 
   @override
-  String month(int value) => 'mes${value == 1 ? '' : 'es'}';
+  String month(int value) => value == 1 ? "mês" : "meses";
 
   @override
   String second(int value) => 'segundo${value == 1 ? '' : 's'}';
@@ -29,5 +29,5 @@ class EsLanguage implements HumanizeLanguage {
   String week(int value) => 'semana${value == 1 ? '' : 's'}';
 
   @override
-  String year(int value) => 'año${value == 1 ? '' : 's'}';
+  String year(int value) => 'ano${value == 1 ? '' : 's'}';
 }

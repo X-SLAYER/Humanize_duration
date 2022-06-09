@@ -1,5 +1,6 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
+/// French
 class FrLanguage implements HumanizeLanguage {
   const FrLanguage();
 

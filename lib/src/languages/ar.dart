@@ -1,5 +1,6 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
+/// Arabic
 class ArLanguage implements HumanizeLanguage {
   const ArLanguage();
 

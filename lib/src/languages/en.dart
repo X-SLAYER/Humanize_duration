@@ -1,5 +1,6 @@
 import 'package:humanize_duration/src/humanize_language.dart';
 
+/// English
 class EnLanguage implements HumanizeLanguage {
   const EnLanguage();
 
