@@ -111,8 +111,11 @@ String humanizeDuration(
   HumanizeOptions options = const HumanizeOptions(),
   HumanizeLanguage language = const EnLanguage(),
 }) {
+  List<Units> sortedUnits = List.from(options.units)
+    ..sort((a, b) => a.index.compareTo(b.index));
+
   int i, len;
-  len = options.units.length;
+  len = sortedUnits.length;
 
   var ms = duration.inMilliseconds.abs();
 
@@ -121,7 +124,7 @@ String humanizeDuration(
   int unitMS, unitCount;
 
   for (i = 0; i < len; i++) {
-    unitName = options.units[i];
+    unitName = sortedUnits[i];
     unitMS = unitMeasures[unitName]!;
     unitCount = (ms / unitMS).floor();
     pieces.add(_HumanizePiece(unitName, unitCount, language));

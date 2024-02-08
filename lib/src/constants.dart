@@ -13,6 +13,9 @@ const Map<Units, int> unitMeasures = {
   Units.millisecond: 1
 };
 
+/// Get the supported languages
+///
+/// Returns a list of supported languages
 const Map<String, HumanizeLanguage> supportedLanguages = {
   'ar': ArLanguage(),
   'en': EnLanguage(),
