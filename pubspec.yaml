@@ -1,6 +1,6 @@
 name: humanize_duration
 description: Humanize a duration to a readable format | 361000 becomes "6 minutes, 1 second"
-version: 0.0.1+1
+version: 0.0.2
 homepage: https://github.com/X-SLAYER/Humanize_duration
 
 environment:
